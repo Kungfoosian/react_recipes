@@ -1,10 +1,10 @@
 import Input from './Input';
-import SearchBtn from './SearchBtn';
+import ActionBtn from './ActionBtn';
 
 function FormByName(props){
     return (<div>
         <Input />
-        <SearchBtn />
+        <ActionBtn type='search' />
     </div>)
 }
 
