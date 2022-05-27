@@ -1,8 +1,10 @@
 
 function Input(props) {
+    let inputName = props.name === '' ? `input-${props.id}` : props.name;
+
     return (
-        <label htmlFor={`ingredient-${props.id}`} key={`ingredient-${props.id}`} id={`ingredient-${props.id}`}>
-            <input type="text" id={props.id} placeholder={props.ingredient} onChange={props.handleChange} />
+        <label htmlFor={`input-${props.id}`} key={`input-${props.id}`} id={`input-${props.id}`}>
+            <input type="text" id={props.id} placeholder={props.name} onChange={props.handleChange} name={inputName} />
         </label>
     ) 
 }

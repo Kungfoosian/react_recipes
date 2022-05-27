@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import Input from './Input';
-import ActionButton from './ActionBtn';
+import ActionButton from './5.0.ActionBtn';
 import { v4 as uuidv4 } from 'uuid';
 
 function FormByIngredient(props){
     const [ ingredientList, updateList ] = useState([
         { id: uuidv4(),
-          name:'placeholder',
+          name:'',
         }]);
 
     const addIngredient = () => {
         let newIngredient = {
             id: uuidv4(),
-            name: 'placeholder'
+            name: ''
         }
 
         updateList([...ingredientList, newIngredient]);
@@ -23,8 +23,6 @@ function FormByIngredient(props){
     }
 
     const updateIngredient = event => {
-        // console.log(event.target.value);
-        // console.log(event.target.id);
         let index = event.target.id;
         let newName = event.target.value;
 
@@ -32,15 +30,20 @@ function FormByIngredient(props){
 
         currentList[index].name = newName;
         updateList(currentList);
-        console.log(currentList);
+    }
+
+    const searchRecipe = event => {
+        console.log(ingredientList);
     }
 
     return (
         <div>
+            <button>By Name</button>
+
             {ingredientList.map((ingredient, index) => {
                 return (
                     <React.Fragment key={`fragment-${index}`}>
-                        <Input key={ingredient.id} id={index} name={`ingredient-${index}`} ingredient={ingredient.name} handleChange={updateIngredient}/>
+                        <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/>
 
                     { ingredientList.length > 1 ? 
                         <ActionButton type='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
@@ -58,7 +61,7 @@ function FormByIngredient(props){
             })}
 
             <div>
-                <ActionButton type='search' onClick={ () => this.searchRecipe() } />
+                <ActionButton type='search' onClick={searchRecipe} />
             </div>
         </div>
     )
