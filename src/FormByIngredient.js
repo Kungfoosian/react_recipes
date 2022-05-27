@@ -1,105 +1,60 @@
 import React, {useState} from 'react';
 import Input from './Input';
 import ActionButton from './ActionBtn';
-
-// class FormByIngredient extends React.Component {
-//     constructor(props){
-//         super(props);
-
-//         this.state = {
-//             ingredients: [undefined],
-//         }
-//     }
-
-//     render() {
-//         let ingredientList = this.state.ingredients;
-//         console.log('\n\nIngredients rendering: ' + ingredientList.length);
-
-//         return (
-//             <div>
-//                 {ingredientList.map((ingredient, index) => {
-//                     return (
-//                         <div key={`ingredient-${index}`} id={`ingredient-${index}`}>
-//                             <Input key={index} id={index}/>
-//                             { ingredientList.indexOf(ingredient) > 0 ? 
-//                                 <ActionButton type='remove' onClick={ () => this.removeIngredient(index) }/> 
-//                                 : null
-//                             }
-//                         </div>
-//                     )
-//                 })}
-
-//                 <div>
-//                     <ActionButton type='add' onClick={ () => this.addIngredient() } />
-//                     <ActionButton type='search' onClick={ () => this.searchRecipe() } />
-//                 </div>
-//             </div>
-//         )
-//     }
-
-//     addIngredient(){
-//         let ingredient = { name: 'placeholder' };
-
-//         let newList = this.state.ingredients;
-//         newList.push(ingredient);
-
-//         this.setState({
-//             ingredients: newList
-//         })
-//         console.log(this.state);
-//     }
-
-//     removeIngredient(id){
-//         console.log('removing ' + id);
-//         let newList = this.state.ingredients;
-        
-//         this.setState({
-//             ingredients: newList.splice(id, 1)
-//         })
-//         console.log(this.state.ingredients);
-//     }    
-
-//     searchRecipe(){
-//         console.log('Searching!!');
-//     }
-// }
+import { v4 as uuidv4 } from 'uuid';
 
 function FormByIngredient(props){
-    const [ ingredientList, updateIngredientList ] = useState(['banana']);
+    const [ ingredientList, updateList ] = useState([
+        { id: uuidv4(),
+          name:'placeholder',
+        }]);
 
     const addIngredient = () => {
-        updateIngredientList([...ingredientList, 'tomato']);
+        let newIngredient = {
+            id: uuidv4(),
+            name: 'placeholder'
+        }
+
+        updateList([...ingredientList, newIngredient]);
     }
 
-    const removeIngredient = (index) => {
-        // let currentList = Array.from(ingredientList);
-        let currentList = [...ingredientList];
-        
-        updateIngredientList(currentList.splice(1, 1));
+    const removeIngredient = id => {
+        updateList(ingredientList.filter(ingredient => ingredient.id !== id));
+    }
+
+    const updateIngredient = event => {
+        // console.log(event.target.value);
+        // console.log(event.target.id);
+        let index = event.target.id;
+        let newName = event.target.value;
+
+        let currentList = ingredientList;
+
+        currentList[index].name = newName;
+        updateList(currentList);
+        console.log(currentList);
     }
 
     return (
         <div>
             {ingredientList.map((ingredient, index) => {
                 return (
-                    <label for={`ingredient-${index}`} key={`ingredient-${index}`} id={`ingredient-${index}`}>
-                    
-                        <Input key={index} id={index} name={`ingredient-${index}`} value={ingredient} />
+                    <React.Fragment key={`fragment-${index}`}>
+                        <Input key={ingredient.id} id={index} name={`ingredient-${index}`} ingredient={ingredient.name} handleChange={updateIngredient}/>
 
                     { ingredientList.length > 1 ? 
-                        <ActionButton type='remove' onClick={ () => removeIngredient(index) }/> 
+                        <ActionButton type='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
                         : ''
                     }
 
                     {
+                        
                         index === ingredientList.length - 1 ?
                             <ActionButton type='add' onClick={addIngredient} />
                             : ''
                     }
-                    
-                    </label>
+                    </React.Fragment>
                 )
-                //<Input key={index} id={index} />
             })}
 
             <div>
