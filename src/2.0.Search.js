@@ -2,9 +2,9 @@ import Form from './3.0.Form';
 
 function Search(props) {
     return (
-        <div class={props.class}>
-            <Form byIngredient={false} />
-            <Form byIngredient={true} />
+        <div className={props.className}>
+            <Form className='by-name' byIngredient={false} />
+            <Form className='by-ingredient' byIngredient={true} />
         </div>
     )
 }

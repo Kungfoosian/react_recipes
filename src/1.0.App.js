@@ -9,8 +9,8 @@ function App(props) {
     <React.Fragment>
       <button>Search</button>
       <button>Discover</button>
-      <Search class='form'/>
-      <Discover class='form' />
+      <Search className='form'/>
+      <Discover className='form' />
     </React.Fragment>
   );
 }

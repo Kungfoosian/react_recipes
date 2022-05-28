@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Input from './Input';
+import Input from './5.1.Input';
 import ActionButton from './5.0.ActionBtn';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -37,9 +37,8 @@ function FormByIngredient(props){
     }
 
     return (
-        <div>
-            <button>By Name</button>
-
+        <div className={props.className}>
+            {/* <button>{props.byIngredient? 'By Ingredient' : 'By Name'}</button> */}
             {ingredientList.map((ingredient, index) => {
                 return (
                     <React.Fragment key={`fragment-${index}`}>
