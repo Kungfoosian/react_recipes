@@ -1,17 +1,21 @@
 import Form from './3.0.Form';
 
 function Search(props) {
+    const toggleTab = tabId => {
+        console.log(tabId);
+    }
+
     return (
         <div className={props.className}>
             <div>
-                <button>By Name</button>
-                <button>By Ingredient</button>
+                <button onClick={e => toggleTab('form-by-name')}>By Name</button>
+                <button onClick={e => toggleTab('form-by-ingredient')}>By Ingredient</button>
             </div>
 
             <div>
-                {/* <Form className='hidden by-name' byIngredient={false} /> */}
-                <Form className='hidden' byIngredient={false} />
-                <Form className='by-ingredient' byIngredient={true} />
+                {/* <Form className='by-name' id='form-by-name' byIngredient={false}  /> */}
+                <Form className='hidden' id='form-by-name' byIngredient={false}  />
+                <Form className='by-ingredient' id='form-by-ingredient' byIngredient={true} />
             </div>
         </div>
     )

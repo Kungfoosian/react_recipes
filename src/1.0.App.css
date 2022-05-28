@@ -24,19 +24,13 @@
     height: 90%;
 }
 
-#root .form > div:last-child .by-name {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
+#root .form > div:last-child .by-name,
 #root .form > div:last-child .by-ingredient {
     height: 100%;
-    padding: 2%;
-    
+    padding: 2%; 
+
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
+

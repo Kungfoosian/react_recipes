@@ -6,8 +6,8 @@ function Form(props) {
     return (
         <React.Fragment>
             {props.byIngredient? 
-                <FormByIngredient byIngredient={props.byIngredient} className={props.className} />
-                : <FormByName byIngredient={props.byIngredient} className={props.className}/>
+                <FormByIngredient byIngredient={props.byIngredient} id={props.id} className={props.className} />
+                : <FormByName byIngredient={props.byIngredient} id={props.id} className={props.className}/>
             }
         </React.Fragment>
     )

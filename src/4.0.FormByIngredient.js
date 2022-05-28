@@ -37,7 +37,7 @@ function FormByIngredient(props){
     }
 
     return (
-        <div className={props.className}>
+        <div className={props.className} id={props.id}>
             {ingredientList.map((ingredient, index) => {
                 return (
                     <React.Fragment key={`fragment-${index}`}>
