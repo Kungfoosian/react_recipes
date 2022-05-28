@@ -5,11 +5,6 @@ import React from 'react';
 function Form(props) {
     return (
         <React.Fragment>
-            <div>
-                <button>By Name</button>
-                <button>By Ingredient</button>
-            </div>
-
             {props.byIngredient? 
                 <FormByIngredient byIngredient={props.byIngredient} className={props.className} />
                 : <FormByName byIngredient={props.byIngredient} className={props.className}/>

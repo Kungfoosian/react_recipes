@@ -6,14 +6,15 @@
     sans-serif;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
+  border: 1px solid red;
 
   box-sizing: border-box;
 }
 
 *:nth-child(even) {
-  background-color:antiquewhite;
+  /* background-color:antiquewhite; */
 }
 
 *:nth-child(odd) {
-  background-color:aquamarine;
+  /* background-color:aquamarine; */
 }

@@ -38,19 +38,20 @@ function FormByIngredient(props){
 
     return (
         <div className={props.className}>
-            {/* <button>{props.byIngredient? 'By Ingredient' : 'By Name'}</button> */}
             {ingredientList.map((ingredient, index) => {
                 return (
                     <React.Fragment key={`fragment-${index}`}>
-                        <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/>
+                        {/* <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/> */}
 
                     { ingredientList.length > 1 ? 
-                        <ActionButton type='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
-                        : ''
+                        <div>
+                            <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/>
+                            <ActionButton type='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
+                        </div>
+                        : <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/>
                     }
 
                     {
-                        
                         index === ingredientList.length - 1 ?
                             <ActionButton type='add' onClick={addIngredient} />
                             : ''
