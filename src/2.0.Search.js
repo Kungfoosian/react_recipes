@@ -9,7 +9,8 @@ function Search(props) {
             </div>
 
             <div>
-                <Form className='by-name' byIngredient={false} />
+                {/* <Form className='hidden by-name' byIngredient={false} /> */}
+                <Form className='hidden' byIngredient={false} />
                 <Form className='by-ingredient' byIngredient={true} />
             </div>
         </div>

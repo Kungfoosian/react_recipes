@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 #root {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -6,7 +10,7 @@
 
 #root .form {
     grid-column: span 2;
-    min-height: 88vh;
+    min-height: 82vh;
 }
 
 #root .form > div:first-child {
@@ -29,4 +33,10 @@
 
 #root .form > div:last-child .by-ingredient {
     height: 100%;
+    padding: 2%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
