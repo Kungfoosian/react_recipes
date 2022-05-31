@@ -1,4 +1,5 @@
-Add 'ingredient <number of ingredient' placeholder
-
 Limit on how many ingredients? (e.g 4)
 
+Add switching function for Search and Discover  
+
+Add switching function for Search by name and Search by ingredient (ref vs state?)

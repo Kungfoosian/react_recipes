@@ -41,7 +41,6 @@ function FormByIngredient(props){
             {ingredientList.map((ingredient, index) => {
                 return (
                     <React.Fragment key={`fragment-${index}`}>
-                        {/* <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/> */}
 
                     { ingredientList.length > 1 ? 
                         <div>
