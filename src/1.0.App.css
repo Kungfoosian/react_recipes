@@ -21,13 +21,6 @@
 }
 
 #root .form > div:last-child {
-    
-    /* position: relative; */
-}
-
-#root .form > div:last-child {
-    /* position: absolute; */
-
     width: 100%;
     height: 90%;
     padding: 2%; 

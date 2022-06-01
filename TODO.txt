@@ -1,5 +1,3 @@
 Limit on how many ingredients? (e.g 4)
 
-Add switching function for Search and Discover  
-
-Add switching function for Search by name and Search by ingredient (ref vs state?)
+Create Card and Overlay Component that use 16:9 ratio 

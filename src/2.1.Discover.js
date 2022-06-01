@@ -1,10 +1,10 @@
-import Form from './3.0.Form'
+import Card from './3.1.Card'
+
 
 function Discover(props) {
     return (
-        <div className={props.className}>
-            <Form byIngredient={false} />
-            <Form byIngredient={true} />
+        <div className={props.className} id={props.id} >
+            <Card className='card' />
         </div>);
 }
 

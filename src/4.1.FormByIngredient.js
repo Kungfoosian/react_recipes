@@ -44,10 +44,10 @@ function FormByIngredient(props){
 
                     { ingredientList.length > 1 ? 
                         <div>
-                            <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/>
+                            <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
                             <ActionButton type='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
                         </div>
-                        : <Input key={ingredient.id} id={index} name={ingredient.name} handleChange={updateIngredient}/>
+                        : <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
                     }
 
                     {

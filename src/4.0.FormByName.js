@@ -3,7 +3,7 @@ import ActionBtn from './5.0.ActionBtn';
 
 function FormByName(props){
     return (<div id={props.id} className={props.className}>
-        <Input />
+        <Input placeholder='e.g. Beef Stroganoff' />
         <ActionBtn type='search' />
     </div>)
 }

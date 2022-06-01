@@ -5,7 +5,7 @@ function Search(props) {
     const [activeTab, setActiveTab] = useState('form-by-name');
 
     return (
-        <div className={props.className}>
+        <div className={props.className} id={props.id} >
             <div>
                 <button onClick={() => setActiveTab('form-by-name')}>By Name</button>
                 <button onClick={() => setActiveTab('form-by-ingredient')}>By Ingredient</button>
