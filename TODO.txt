@@ -1,3 +1,5 @@
 Limit on how many ingredients? (e.g 4)
 
-Create Card and Overlay Component that use 16:9 ratio 
+zoom background on hover (Discover)
+
+add transition to discover text
