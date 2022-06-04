@@ -1,5 +1,1 @@
 Limit on how many ingredients? (e.g 4)
-
-zoom background on hover (Discover)
-
-add transition to discover text

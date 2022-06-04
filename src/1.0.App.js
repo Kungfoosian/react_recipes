@@ -8,8 +8,10 @@ function App(props) {
 
   return (
     <React.Fragment>
-      <button onClick={() => setActiveTab('search-form')}>Search</button>
-      <button onClick={() => setActiveTab('discover-form')}>Discover</button>
+      <div className='button-container'>
+        <button onClick={() => setActiveTab('search-form')}>Search</button>
+        <button onClick={() => setActiveTab('discover-form')}>Discover</button>
+      </div>
 
       { activeTab === 'search-form' ?
           <Search className='form' id='search-form' />

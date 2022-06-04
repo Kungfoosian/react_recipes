@@ -6,16 +6,29 @@
     display: none;
 }
 
-#root {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 5fr;
+body {
+    height: 100vh;
 }
 
-#root .form {
-    grid-column: span 2;
-    min-height: 82vh;
+#root {
+    /* display: grid; */
+    /* grid-template-rows: 1fr 5fr; */
+    height: 100%;
 }
+
+#root > .button-container {
+    display: flex;
+    height: 10%;
+}
+
+#root > .button-container > button {
+    width: 50%;
+}
+
+#root > .form {
+    height: 90%;
+}
+
 
 #root .form > div:first-child.form-selector {
     height: 10%;
