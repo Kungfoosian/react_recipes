@@ -1,13 +1,22 @@
-// import Overlay from './'
 import './3.1.Card.css';
 
+// In future just use the html link for food bg, these are just placeholders
+import burritoBg from './img-placeholder/burrito.jpg';  
+import foodBg from './img-placeholder/food-bg.jpeg';  
+import hamburgerBg from './img-placeholder/hamburger.jpg';  
+import tacosBg from './img-placeholder/tacos.jpg';  
 
 function Card(props) {
+
+  // Remove in future, these are just placeholders
+  const bgLinks = [ burritoBg, foodBg, hamburgerBg, tacosBg ];
+
   return (
     <div className={props.className}>
-      <div className='text-container'>
-        <h1 className='card-title'>Card name here</h1>
-        <p className='card-description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <div className='text-container' style={{
+        backgroundImage: `url(${bgLinks[Math.floor(Math.random() * bgLinks.length)]})`
+      }}>
+        <h3 className='card-title'>Card name here</h3>
       </div>
     </div>
   )

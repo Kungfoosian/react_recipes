@@ -4,7 +4,7 @@ import Discover from './2.1.Discover';
 import React, { useState } from 'react';
 
 function App(props) {
-  const [activeTab, setActiveTab] = useState('discover-form');
+  const [activeTab, setActiveTab] = useState('search-form');
 
   return (
     <React.Fragment>

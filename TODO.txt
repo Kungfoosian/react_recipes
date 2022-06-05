@@ -1,1 +1,5 @@
 Limit on how many ingredients? (e.g 4)
+
+Remove & delete placeholder bg for Cards when implementing API calls
+
+Style Search forms
