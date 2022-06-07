@@ -32,6 +32,7 @@ function FormByIngredient(props){
         updateList(currentList);
     }
 
+    // TODO
     const searchRecipe = event => {
         console.log(ingredientList);
     }
@@ -43,24 +44,19 @@ function FormByIngredient(props){
                     <React.Fragment key={`fragment-${index}`}>
 
                     { ingredientList.length > 1 ? 
-                        <div>
+                        <div className='ingredient-container'>
                             <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
-                            <ActionButton type='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
+                            <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
                         </div>
                         : <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
-                    }
-
-                    {
-                        index === ingredientList.length - 1 ?
-                            <ActionButton type='add' onClick={addIngredient} />
-                            : ''
                     }
                     </React.Fragment>
                 )
             })}
 
-            <div>
-                <ActionButton type='search' onClick={searchRecipe} />
+            <div className='button-container'>
+                <ActionButton type='add' className='add' onClick={addIngredient} disabled={ingredientList.length === 4 ? true : false} />
+                <ActionButton type='search' className='search' onClick={searchRecipe} />
             </div>
         </div>
     )
