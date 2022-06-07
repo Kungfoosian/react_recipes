@@ -2,8 +2,14 @@ Limit on how many ingredients? (e.g 4)
 
 Remove & delete placeholder bg for Cards when implementing API calls
 
+<<<<<<< HEAD
 Style Search forms
 
 Style all buttons to look like tabs? (top border curve)
 
 style by ingredient form
+=======
+add transition to discover text
+
+mobile first
+>>>>>>> e54cdb2 (todo)
