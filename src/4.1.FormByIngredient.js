@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Input from './5.1.Input';
 import ActionButton from './5.0.ActionBtn';
 import { v4 as uuidv4 } from 'uuid';
+import './4.1.FormByIngredient.css';
+import ToastNotification from './5.2.ToastNotification';
 
 function FormByIngredient(props){
     const [ ingredientList, updateList ] = useState([
@@ -10,6 +12,8 @@ function FormByIngredient(props){
         }]);
 
     const addIngredient = () => {
+        // if(ingredientList.length === 4) return <PopupMessage />;
+
         let newIngredient = {
             id: uuidv4(),
             name: ''
@@ -39,17 +43,19 @@ function FormByIngredient(props){
 
     return (
         <div className={props.className} id={props.id}>
+            <ToastNotification />
+
             {ingredientList.map((ingredient, index) => {
                 return (
                     <React.Fragment key={`fragment-${index}`}>
-
-                    { ingredientList.length > 1 ? 
-                        <div className='ingredient-container'>
-                            <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
+                    
+                    <div className='ingredient-container'>
+                        <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
+                        { ingredientList.length > 1 ?
                             <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
-                        </div>
-                        : <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredient}/>
-                    }
+                            : ''
+                        }
+                    </div>
                     </React.Fragment>
                 )
             })}

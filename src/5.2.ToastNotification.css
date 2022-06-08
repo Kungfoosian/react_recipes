@@ -1,0 +1,12 @@
+.toast-container {
+  position: absolute;
+  top: 0;
+
+  background-color: orange;
+  width: 90%;
+}
+
+.toast-container > .notification-image {
+  width: 35px;
+  height: auto;
+}

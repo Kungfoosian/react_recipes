@@ -5,8 +5,6 @@ Style Search forms
 
 Style all buttons to look like tabs? (top border curve)
 
-style by ingredient form
-
-divide ingredient form so the buttons are at bottom and won't move
+divide ingredient form so the buttons are at bottom and won't move?
 
 Add popup message when trying to add more than 4 ingredient
