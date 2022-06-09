@@ -43,7 +43,8 @@ function FormByIngredient(props){
 
     return (
         <div className={props.className} id={props.id}>
-            <ToastNotification />
+            { ingredientList.length >= 4 ? <ToastNotification type='warning' message='Only 4 ingredients' /> : '' }
+            
 
             {ingredientList.map((ingredient, index) => {
                 return (
