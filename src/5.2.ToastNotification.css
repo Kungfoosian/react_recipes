@@ -15,11 +15,11 @@
   align-items: center;
 
   z-index: 1;
+  animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
 }
 
-.toast-container .show {
+.toast-container.show {
   /* visibility: hidden; */
-  animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s ;
 }
 
 .toast-container > .notification-image {
@@ -43,12 +43,12 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    top: -70px;
+    /* top: -70px; */
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    /* top: 10px; */
-    transform: translateY(100px);
+    transform: translateY(10px);
   }
 }
 

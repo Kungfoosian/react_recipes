@@ -12,14 +12,14 @@ function FormByIngredient(props){
         }]);
 
     const addIngredient = () => {
-        // if(ingredientList.length === 4) return <PopupMessage />;
+        if(ingredientList.length === 4) return updateList([...ingredientList]);
 
         let newIngredient = {
             id: uuidv4(),
             name: ''
         }
 
-        updateList([...ingredientList, newIngredient]);
+        return updateList([...ingredientList, newIngredient]);
     }
 
     const removeIngredient = id => {
@@ -43,6 +43,7 @@ function FormByIngredient(props){
 
     return (
         <div className={props.className} id={props.id}>
+            {console.log('Ola')}
             { ingredientList.length >= 4 ? <ToastNotification type='warning' message='Only 4 ingredients' /> : '' }
             
 
@@ -62,7 +63,7 @@ function FormByIngredient(props){
             })}
 
             <div className='button-container'>
-                <ActionButton type='add' className='add' onClick={addIngredient} disabled={ingredientList.length === 4 ? true : false} />
+                <ActionButton type='add' className='add' onClick={addIngredient} />
                 <ActionButton type='search' className='search' onClick={searchRecipe} />
             </div>
         </div>

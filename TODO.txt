@@ -9,3 +9,4 @@ divide ingredient form so the buttons are at bottom and won't move?
 
 Add popup message when trying to add more than 4 ingredient
   Make add button shake on click when trying to add or than 4 ingredients
+  find out how to delete popup message after 2.5sec, or upon clicking 'x'

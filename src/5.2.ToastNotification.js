@@ -6,7 +6,7 @@ import warningLogo from './img-placeholder/warning.png';
 export default function ToastNotification(props) {
 
   return (
-    <div className='toast-container show'>
+    <div className='toast-container'>
       <img className='notification-image' src={warningLogo} alt='warning' />
 
       <div className='notification-container'>
