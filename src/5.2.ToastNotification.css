@@ -1,10 +1,22 @@
-.toast-container {
-  /* visibility: hidden; */
-  /* opacity: 0; */
+.toaster-container {
+  background-color: black;
+  opacity: .5;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 50%;
 
   position: absolute;
-  top: 10px;
-  /* right: 5px; */
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+  overflow: scroll;
+}
+
+.toaster-container > .notification-container {
   box-shadow: 0 0 10px black;
 
   background-color: orange;
@@ -15,23 +27,23 @@
   align-items: center;
 
   z-index: 1;
-  animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+  /* animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s forwards; */
 }
 
-.toast-container.show {
+.toaster-container > .notification-container.show {
   /* visibility: hidden; */
 }
 
-.toast-container > .notification-image {
+.toaster-container > .notification-container > .notification-image {
   width: 35px;
   height: auto;
 }
 
-.toast-container > .notification-container {
+.toaster-container > .notification-container > .notification-container {
   padding: 8px;
 }
 
-.toast-container > button {
+.toaster-container > .notification-container > button {
   background-color: transparent;
 
   cursor: pointer;
