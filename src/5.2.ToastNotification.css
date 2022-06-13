@@ -1,20 +1,4 @@
-.toaster-container {
-  background-color: black;
-  opacity: .5;
 
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  height: 50%;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  z-index: 1;
-  overflow: scroll;
-}
 
 .toaster-container > .notification-container {
   box-shadow: 0 0 10px black;
@@ -28,10 +12,8 @@
 
   z-index: 1;
   /* animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s forwards; */
-}
 
-.toaster-container > .notification-container.show {
-  /* visibility: hidden; */
+  /* transition-duration: 2s; */
 }
 
 .toaster-container > .notification-container > .notification-image {
