@@ -12,9 +12,11 @@ function FormByIngredient(props){
         updateAlertList([...alertList, { id: uuidv4(), type, message}]);
     } 
 
-    const removeAlert = id => updateAlertList(alertList.filter(alert => alert.id !== id));
+    const removeAlert = id => {
+        updateAlertList(alertList.filter(alert => alert.id !== id))
+    }
 
-    const resetAlerts = () => updateAlertList([]);
+    const resetAlerts = () => updateAlertList([]) ;
     
     const [ ingredientList, updateIngredientList ] = useState([
         { 
@@ -46,24 +48,15 @@ function FormByIngredient(props){
     }
 
     // Reset alerts everytime there are <= 4 ingredients
-    useEffect(() => ingredientList.length <= 4 ? resetAlerts() : 'ingredient list length is within aceptable range', [ingredientList]);
-
-    // If there are active alerts, deletes the first alert every 2.5s
-    useEffect(() => {
-        if ( alertList.length === 0 ) return;
-
-        let firstAlertId = alertList[0].id;
-
-        let timerID = setTimeout(() => removeAlert(firstAlertId), 2500);
-
-        return () => clearTimeout(timerID); // need to clear timeout or will flicker when re-render
-    }, [alertList])
+    useEffect(() => { if(alertList.length > 0 && ingredientList.length < 4)  resetAlerts() } , [ingredientList]);
 
     return (
         <div className={props.className} id={props.id}>
             { ingredientList.length === 4 && alertList.length > 0? 
                 <div className='toaster-container'>
-                    <ToastNotification list={alertList} handleRemove={removeAlert} /> 
+                    { alertList.map(alert => {
+                        return <ToastNotification key={alert.id} id={alert.id} type={alert.type} message={alert.message} handleRemove={removeAlert} delay={5000} />
+                    })}
                 </div>    
                 : '' }
                     

@@ -1,27 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './5.2.ToastNotification.css';
 import warningLogo from './img-placeholder/warning.png';
 
 
 export default function ToastNotification(props) {
-  let notificationList = props.list;
-  
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    let timerID = setTimeout(() => {
+      setVisible(false);
+      // clearTimeout(timerID);
+      // props.handleRemove(props.id);
+    }, props.delay);
+    
+    return () => clearTimeout(timerID);
+  }, [props.delay])
+
   return (
-      notificationList.map( notification => {
-        return (
-          <React.Fragment key={`fragment-${notification.id}`}>
-            <div key={notification.id} id={notification.id} className='notification-container'>
-              <img className='notification-image' src={warningLogo} alt='warning' />
+    visible ?
+      <div id={props.id} className='notification-container'>
+        <img className='notification-image' src={warningLogo} alt='warning' />
 
-              <div className='notification-container'>
-                <p className='notification-title'>{notification.type}</p>
-                <p className='notification-message'>{notification.message}</p>
-              </div> 
+        <div className='notification-container'>
+          <p className='notification-title'>{props.type}</p>
+          <p className='notification-message'>{props.message}</p>
+        </div> 
 
-              <button onClick={() => props.handleRemove(notification.id)}>&times;</button>
-            </div>
-          </React.Fragment>
-        )
-        })
+        <button onClick={() => props.handleRemove(props.id)}>&times;</button>
+      </div>
+    : ''
   )
 }

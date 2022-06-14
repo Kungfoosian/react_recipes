@@ -1,4 +1,22 @@
+.toaster-container {
+  /* background-color: black; */
+  /* opacity: .5; */
 
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+  overflow: scroll;
+
+  pointer-events:  none;
+}
 
 .toaster-container > .notification-container {
   box-shadow: 0 0 10px black;
@@ -14,6 +32,7 @@
   /* animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s forwards; */
 
   /* transition-duration: 2s; */
+  pointer-events: all;
 }
 
 .toaster-container > .notification-container > .notification-image {
