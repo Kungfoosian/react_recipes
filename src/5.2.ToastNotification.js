@@ -24,9 +24,7 @@ export default function ToastNotification(props) {
 
   useEffect(() => {
     let intervalID = setInterval(() => {
-      console.log(toastList.length, list.length);
       if(toastList.length && list.length) {
-        console.log(toastList[0].id);
         deleteToast(toastList[0].id);
       }
     }, delay);
