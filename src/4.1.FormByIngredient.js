@@ -25,7 +25,9 @@ function FormByIngredient(props){
         updateIngredientList([...ingredientList, { id: uuidv4(), name: '' }]);
     };
         
-    const removeIngredient = id => { updateIngredientList(ingredientList.filter(ingredient => ingredient.id !== id)) }
+    const removeIngredient = id => { 
+        updateIngredientList(ingredientList.filter(ingredient => ingredient.id !== id)) 
+    }
 
     const updateIngredientName = event => {
         let id = event.target.id;
