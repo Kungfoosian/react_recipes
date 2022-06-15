@@ -9,7 +9,6 @@ function FormByIngredient(props){
     const [ alertList, updateAlertList ] = useState([]);
 
     const addAlert = (type, message) => {
-        console.log('adding');
         updateAlertList([...alertList, { id: uuidv4(), type, message}]);
     } 
 
@@ -44,7 +43,6 @@ function FormByIngredient(props){
         console.log(ingredientList);
     }
 
-    // Reset alerts everytime there are <= 4 ingredients
     useEffect(() => { if(alertList.length > 0 && ingredientList.length < 4)  resetAlerts() } , [ingredientList]);
 
     return (
@@ -53,16 +51,13 @@ function FormByIngredient(props){
 
             {ingredientList.map((ingredient, index) => {
                 return (
-                    <React.Fragment key={`fragment-${index}`}>
-                    
-                    <div className='ingredient-container'>
+                    <div key={index} className='ingredient-container'>
                         <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredientName}/>
                         { ingredientList.length > 1 ?
                             <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
                             : ''
                         }
                     </div>
-                    </React.Fragment>
                 )
             })}
 
