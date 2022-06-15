@@ -4,30 +4,52 @@ import warningLogo from './img-placeholder/warning.png';
 
 
 export default function ToastNotification(props) {
-  const [visible, setVisible] = useState(true);
+  const { toastList, delay } = props;
+  const [list, setList] = useState(toastList);
+
+  const deleteToast = id => {
+    let toastIndexFound = toastList.findIndex(toast => toast.id === id);
+    
+    if (toastIndexFound < 0) return;
+
+    list.splice(toastIndexFound, 1);
+    toastList.splice(toastIndexFound, 1);
+
+    setList([...list]);
+  }
 
   useEffect(() => {
-    let timerID = setTimeout(() => {
-      setVisible(false);
-      // clearTimeout(timerID);
-      // props.handleRemove(props.id);
-    }, props.delay);
+    setList([...toastList]);
+  },[toastList])
+
+  useEffect(() => {
+    let intervalID = setInterval(() => {
+      console.log(toastList.length, list.length);
+      if(toastList.length && list.length) {
+        console.log(toastList[0].id);
+        deleteToast(toastList[0].id);
+      }
+    }, delay);
     
-    return () => clearTimeout(timerID);
-  }, [props.delay])
+    return () => clearInterval(intervalID);
+  }, [toastList, list, delay])
 
   return (
-    visible ?
-      <div id={props.id} className='notification-container'>
-        <img className='notification-image' src={warningLogo} alt='warning' />
+    <div className='toaster-container'>
+      {toastList.map(toast => {
+        return (
+          <div key={toast.id} id={toast.id} className='notification-container'>
+            <img className='notification-image' src={warningLogo} alt='warning' />
 
-        <div className='notification-container'>
-          <p className='notification-title'>{props.type}</p>
-          <p className='notification-message'>{props.message}</p>
-        </div> 
+            <div className='notification-container'>
+              <p className='notification-title'>{toast.type}</p>
+              <p className='notification-message'>{toast.message}</p>
+            </div> 
 
-        <button onClick={() => props.handleRemove(props.id)}>&times;</button>
-      </div>
-    : ''
+            <button onClick={() => deleteToast(toast.id)}>&times;</button>
+          </div>
+        )
+      })}
+    </div>
   )
 }

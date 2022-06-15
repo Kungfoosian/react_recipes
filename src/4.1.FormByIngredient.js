@@ -9,12 +9,9 @@ function FormByIngredient(props){
     const [ alertList, updateAlertList ] = useState([]);
 
     const addAlert = (type, message) => {
+        console.log('adding');
         updateAlertList([...alertList, { id: uuidv4(), type, message}]);
     } 
-
-    const removeAlert = id => {
-        updateAlertList(alertList.filter(alert => alert.id !== id))
-    }
 
     const resetAlerts = () => updateAlertList([]) ;
     
@@ -52,14 +49,7 @@ function FormByIngredient(props){
 
     return (
         <div className={props.className} id={props.id}>
-            { ingredientList.length === 4 && alertList.length > 0? 
-                <div className='toaster-container'>
-                    { alertList.map(alert => {
-                        return <ToastNotification key={alert.id} id={alert.id} type={alert.type} message={alert.message} handleRemove={removeAlert} delay={5000} />
-                    })}
-                </div>    
-                : '' }
-                    
+            <ToastNotification toastList={alertList} delay={2500} />
 
             {ingredientList.map((ingredient, index) => {
                 return (
