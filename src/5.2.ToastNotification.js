@@ -6,7 +6,21 @@ import warningLogo from './img-placeholder/warning.png';
 export default function ToastNotification(props) {
   const { toastList, delay } = props;
   const [list, setList] = useState(toastList);
-
+  
+  useEffect(() => {
+    setList([...toastList]);
+  },[toastList])
+  
+  useEffect(() => {
+    let intervalID = setInterval(() => {
+      if( list.length) {
+        deleteToast(list[0].id);
+      }
+    }, delay);
+    
+    return () => clearInterval(intervalID);
+  }, [list, delay])
+  
   const deleteToast = id => {
     let toastIndexFound = toastList.findIndex(toast => toast.id === id);
     
@@ -17,20 +31,6 @@ export default function ToastNotification(props) {
 
     setList([...list]);
   }
-
-  useEffect(() => {
-    setList([...toastList]);
-  },[toastList])
-
-  useEffect(() => {
-    let intervalID = setInterval(() => {
-      if(toastList.length && list.length) {
-        deleteToast(toastList[0].id);
-      }
-    }, delay);
-    
-    return () => clearInterval(intervalID);
-  }, [toastList, list, delay])
 
   return (
     <div className='toaster-container'>

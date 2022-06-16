@@ -15,19 +15,37 @@
   position: relative;
 }
 
-#root .form > .by-ingredient >  .ingredient-container,
-#root .form > .by-ingredient >  .ingredient-container > label,
+#root .form > .by-ingredient {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#root .form > .by-ingredient >  .ingredient-container {
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+#root .form > .by-ingredient >  .ingredient-container > .input-container,
+#root .form > .by-ingredient >  .ingredient-container > .input-container > label,
   #root .form > .by-ingredient >  .button-container {
   width: 80%;
 }
 
-#root .form > .by-ingredient > .ingredient-container {
+#root .form > .by-ingredient > .ingredient-container > .input-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-#root .form > .by-ingredient > .ingredient-container > label > input {
+#root .form > .by-ingredient > .ingredient-container > .input-container > label > input {
   text-align: center;
   padding: 10px;
   border-radius: 18px;
@@ -40,8 +58,8 @@
   transition-duration: var(--transition-duration);
 }
 
-#root .form > .by-ingredient > .ingredient-container > label > input:hover,
-#root .form > .by-ingredient > .ingredient-container > label > input:focus {
+#root .form > .by-ingredient > .ingredient-container > .input-container > label > input:hover,
+#root .form > .by-ingredient > .ingredient-container > .input-container > label > input:focus {
   outline: none !important;
 
   border-color: white;
@@ -49,11 +67,11 @@
   color: black;
 }
 
-#root .form > .by-ingredient > .ingredient-container > label > input {
+#root .form > .by-ingredient > .ingredient-container > .input-container > label > input {
   width: 100%;
 }
 
-#root .form > .by-ingredient >  div > button.remove {
+#root .form > .by-ingredient >  .ingredient-container > .input-container > button.remove {
   width: 35px;
   height: 35px;
 
@@ -63,16 +81,18 @@
 
   position: relative;
 
+  border: none;
+
 }
 
-#root .form > .by-ingredient >  div > button.remove:hover {
+#root .form > .by-ingredient >  .ingredient-container > .input-container > button.remove:hover {
   animation-name: shake;
   animation-duration: .5s;
   animation-iteration-count: infinite;
 }
 
-#root .form > .by-ingredient >  div > button.remove::before,
-#root .form > .by-ingredient >  div > button.remove::after {
+#root .form > .by-ingredient >  .ingredient-container > .input-container > button.remove::before,
+#root .form > .by-ingredient >  .ingredient-container > .input-container > button.remove::after {
 
   content: '';
 
@@ -88,7 +108,7 @@
   position: absolute;
 }
 
-#root .form > .by-ingredient >  div > button.remove::after {
+#root .form > .by-ingredient >  .ingredient-container > .input-container > button.remove::after {
   transform: rotate(-45deg);
 }
 
@@ -102,17 +122,20 @@
   width: 40%;
   
   padding: 10px 20px;
+
   border-radius: 18px;
+  border: none;
 
   font-weight: bold;
 
   color: white;
 
   transition-duration: var(--transition-duration);
+
 }
 
 #root .form > .by-ingredient > .button-container > button.add {
-  background-color: var(--green);
+  background-color:cadetblue ;
 }
 
 #root .form > .by-ingredient > .button-container > button.search {

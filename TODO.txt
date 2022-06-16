@@ -1,12 +1,10 @@
 
 Remove & delete placeholder bg for Cards when implementing API calls
 
-Style Search forms
-
 Style all buttons to look like tabs? (top border curve)
-
-divide ingredient form so the buttons are at bottom and won't move?
 
 Popup message:
   Make add button shake on click when trying to add or than 4 ingredients
-  stype popup message
+
+Remove Action button component, replace w/ regular buttons in components
+  that needs it (components bloating?)

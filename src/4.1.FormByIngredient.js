@@ -9,7 +9,7 @@ function FormByIngredient(props){
     const [ alertList, updateAlertList ] = useState([]);
 
     const addAlert = (type, message) => {
-        updateAlertList([...alertList, { id: uuidv4(), type, message}]);
+        updateAlertList([{ id: uuidv4(), type, message}, ...alertList]);
     } 
 
     const resetAlerts = () => updateAlertList([]) ;
@@ -51,17 +51,19 @@ function FormByIngredient(props){
         <div className={props.className} id={props.id}>
             <ToastNotification toastList={alertList} delay={2500} />
 
-            {ingredientList.map((ingredient, index) => {
-                return (
-                    <div key={index} className='ingredient-container'>
-                        <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredientName}/>
-                        { ingredientList.length > 1 ?
-                            <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
-                            : ''
-                        }
-                    </div>
-                )
-            })}
+            <div className='ingredient-container'>
+                {ingredientList.map((ingredient, index) => {
+                    return (
+                        <div key={index} className='input-container'>
+                            <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredientName}/>
+                            { ingredientList.length > 1 ?
+                                <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
+                                : ''
+                            }
+                        </div>
+                    )
+                })}
+            </div>
 
             <div className='button-container'>
                 <ActionButton type='add' className='add' onClick={() => {                   
