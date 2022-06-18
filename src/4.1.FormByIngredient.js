@@ -45,7 +45,7 @@ function FormByIngredient(props){
         console.log(ingredientList);
     }
 
-    useEffect(() => { if(alertList.length > 0 && ingredientList.length < 4)  resetAlerts() } , [ingredientList]);
+    useEffect(() => { if(alertList.length > 0 && ingredientList.length < 4)  resetAlerts() } , [ingredientList, alertList]);
 
     return (
         <div className={props.className} id={props.id}>

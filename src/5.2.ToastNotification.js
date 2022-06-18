@@ -7,6 +7,17 @@ export default function ToastNotification(props) {
   const { toastList, delay } = props;
   const [list, setList] = useState(toastList);
   
+  const deleteToast = id => {
+    let toastIndexFound = toastList.findIndex(toast => toast.id === id);
+    
+    if (toastIndexFound < 0) return;
+
+    list.splice(toastIndexFound, 1);
+    toastList.splice(toastIndexFound, 1);
+
+    setList([...list]);
+  }
+  
   useEffect(() => {
     setList([...toastList]);
   },[toastList])
@@ -19,18 +30,8 @@ export default function ToastNotification(props) {
     }, delay);
     
     return () => clearInterval(intervalID);
-  }, [list, delay])
+  }, [list, delay, deleteToast])
   
-  const deleteToast = id => {
-    let toastIndexFound = toastList.findIndex(toast => toast.id === id);
-    
-    if (toastIndexFound < 0) return;
-
-    list.splice(toastIndexFound, 1);
-    toastList.splice(toastIndexFound, 1);
-
-    setList([...list]);
-  }
 
   return (
     <div className='toaster-container'>
