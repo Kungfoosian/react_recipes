@@ -17,11 +17,11 @@ app.get('/', (req, res) => {
 
 app.get('/recipes-by-name', (req, res) => {
   let recipe = req.query.q;
-  // console.log(req.query.q);
+  console.log(`Server: looking for ${recipe}`);
   const options = {
     method: 'GET',
     url: 'https://tasty.p.rapidapi.com/recipes/list',
-    params: {from: '0', size: '5', q:recipe},
+    params: {from: '0', size: '10', q:recipe},
     headers: {
       'X-RapidAPI-Key': process.env.TASTYAPI_KEY,
       'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
@@ -30,8 +30,23 @@ app.get('/recipes-by-name', (req, res) => {
   
   axios.request(options)
   .then(response => {
-    res.json(response.data);
+    let filteredResults = filterMultiRecipeResults(response.data.results);
+
+    let topResults = getTopResults(filteredResults, 6);
+
+    res.json(topResults);
   }).catch(function (error) {
     console.error(error);
   });
 })
+
+
+function filterMultiRecipeResults(array) {
+  return array.filter(element => !Object.hasOwn(element, 'recipes'))
+}
+
+function getTopResults(array, amountToReturn) {
+  if(array.length <= amountToReturn) return array;
+
+  return array.slice(0, amountToReturn);
+}

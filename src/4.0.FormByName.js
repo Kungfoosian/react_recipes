@@ -5,14 +5,20 @@ const axios = require('axios');
 
 export default function FormByName(props){
     const [recipe, editRecipe] = useState('');
+    const [resultList, editResultList] = useState([]);
 
+    const addResults = array => {
+        editResultList([...array]);
+    }
+    
     const updateRecipe = event => {
         editRecipe(event.target.value);
-        // console.log(recipe);
     }
 
-    const searchRecipe = () => {
-        console.log(`searching for ${recipe}`);
+    const searchForRecipe = () => {
+        if(recipe === '') return;
+
+        console.log(`Client: searching for ${recipe}`);
 
         const options = {
             method: 'GET',
@@ -24,19 +30,19 @@ export default function FormByName(props){
           
           axios.request(options)
           .then(response => {
-            // res.json(response.data);
-            console.log(response.data);
+            // console.log(response.data);
+            addResults(response.data);
+
           }).catch(function (error) {
             console.error(error);
           });
     }
 
     return (<div id={props.id} className={props.className}>
-        {/* <Input placeholder='e.g. Beef Stroganoff' /> */}
         <label htmlFor='name-input'>
             <input type="text" name='name-input' placeholder='e.g. Carrot Cake' onChange={updateRecipe} />
         </label>
 
-        <button onClick={searchRecipe}>SEARCH</button>
+        <button onClick={searchForRecipe}>SEARCH</button>
     </div>)
 }
