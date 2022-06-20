@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RecipeCard from "./5.3.RecipeCard";
 
 const SERVER_URL = 'http://localhost:8000'
 const axios = require('axios');
@@ -10,6 +11,8 @@ export default function FormByName(props){
     const addResults = array => {
         editResultList([...array]);
     }
+
+    const clearResults = () => editResultList([]);
     
     const updateRecipe = event => {
         editRecipe(event.target.value);
@@ -38,11 +41,13 @@ export default function FormByName(props){
           });
     }
 
-    return (<div id={props.id} className={props.className}>
-        <label htmlFor='name-input'>
-            <input type="text" name='name-input' placeholder='e.g. Carrot Cake' onChange={updateRecipe} />
-        </label>
-
-        <button onClick={searchForRecipe}>SEARCH</button>
-    </div>)
+    return resultList.length ? 
+        <RecipeCard list={resultList} clearResults={clearResults} />
+        : (<div id={props.id} className={props.className}>
+            <label htmlFor='name-input'>
+                <input type="text" name='name-input' placeholder='e.g. Carrot Cake' onChange={updateRecipe} />
+            </label>
+    
+            <button onClick={searchForRecipe}>SEARCH</button>
+        </div>)
 }

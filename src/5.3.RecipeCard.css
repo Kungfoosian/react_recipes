@@ -1,0 +1,20 @@
+.recipe-card-container {
+  height: 90%;
+
+  display: grid;
+  grid-template-rows: 10fr 1fr;
+}
+
+.recipe-card-container > div {
+  overflow-y: scroll;
+}
+
+.recipe-card-container > div > .item-container {
+  width: 80%;
+  height: 30%;
+
+}
+
+
+
+ 
