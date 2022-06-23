@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Spinner } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 import RecipeCard from "./5.3.RecipeCard";
+import './4.0.FormByName.css';
 
 const SERVER_URL = 'http://localhost:8000'
 const axios = require('axios');
@@ -56,9 +57,13 @@ export default function FormByName(props){
     }, [resultList.length])
 
     return loading ?
-        <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <div className="spinner-container">
+            <Spinner animation="border" role="status">
+            
+                <span className="visually-hidden">Loading...</span>
+
+            </Spinner>
+        </div>
         : resultList.length ? 
             <RecipeCard list={resultList} clearResults={clearResults} />
             : (<div id={props.id} className={props.className}>

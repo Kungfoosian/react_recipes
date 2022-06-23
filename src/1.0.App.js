@@ -2,6 +2,7 @@ import './1.0.App.css';
 import Search from './2.0.Search';
 import Discover from './2.1.Discover';
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App(props) {
   const [activeTab, setActiveTab] = useState('search-form');
