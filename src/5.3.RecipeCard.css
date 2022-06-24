@@ -62,7 +62,17 @@
 .recipe-card-container > .grid-content-section > .item-container > .overlay-container > .recipe-info {
   grid-template-columns: repeat(2, 1fr);
   display: grid;
-
+  
   text-align: center;
   font-size: 1rem;
+  
+  max-height: 20%;
+}
+
+.recipe-card-container > .grid-content-section > .item-container > .overlay-container > .recipe-info > p {
+  height: 100%;
+}
+
+.recipe-card-container > .grid-content-section > .item-container > .overlay-container > .recipe-info > p:first-child {
+  overflow-y: scroll;
 }

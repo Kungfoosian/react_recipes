@@ -4,6 +4,7 @@ import ActionButton from './5.0.ActionBtn';
 import { v4 as uuidv4 } from 'uuid';
 import './4.1.FormByIngredient.css';
 import ToastNotification from './5.2.ToastNotification';
+import axios from 'axios';
 
 function FormByIngredient(props){
     const [ alertList, updateAlertList ] = useState([]);
@@ -41,8 +42,22 @@ function FormByIngredient(props){
         updateIngredientList(currentList);
     }
 
-    const searchRecipe = event => {
-        console.log(ingredientList);
+    const searchRecipe = () => {
+        let ingredients = ingredientList.map(ingredient => ingredient.name).toString();
+
+        console.log(ingredients);
+
+        const OPTIONS = {
+            method: 'GET',
+            url: '/multi-ingredient-recipes',
+            params: {
+                i: ingredients,
+            }
+        } ;
+
+        axios.request(OPTIONS)
+        .then(response => console.log(response.data))
+        .catch(err => console.error(err))
     }
 
     useEffect(() => { if(alertList.length > 0 && ingredientList.length < 4)  resetAlerts() } , [ingredientList, alertList]);

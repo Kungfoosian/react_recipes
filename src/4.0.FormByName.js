@@ -3,7 +3,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import RecipeCard from "./5.3.RecipeCard";
 import './4.0.FormByName.css';
 
-const SERVER_URL = 'http://localhost:8000'
+// const SERVER_URL = 'http://localhost:8000'
 const axios = require('axios');
 
 export default function FormByName(props){
@@ -32,7 +32,7 @@ export default function FormByName(props){
 
         const options = {
             method: 'GET',
-            url: `${SERVER_URL}/recipes-by-name`,
+            url: '/recipes-by-name',
             params: {
                 q: recipe,
             }
@@ -42,7 +42,6 @@ export default function FormByName(props){
           .then(response => {
             // console.log(response.data);
             addResults(response.data);
-
           }).catch(function (error) {
             console.error(error);
           });

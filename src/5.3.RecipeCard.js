@@ -4,39 +4,31 @@ import './5.3.RecipeCard.css';
 export default function RecipeCard(props) {
   const { list, clearResults } = props;
 
-  const convertTime = time => {
-    let newTime;
-
-    if(time >= 60) {
-      newTime = Math.floor(time / 60).toString() + ' hr';
-    } else if (time > 0) {
-      newTime = time.toString() + ' min';
-    } else {
-      newTime = 'N/A';
-    }
-
-    return newTime;
-  }
-
   return (
     <div className='recipe-card-container'>
 
       <div className='grid-content-section'>
         {list.map(item => {
-          let recipeTime = item.total_time_minutes || item.cook_time_minutes || item.prep_time_minutes || -1;
+          let ingredients = '';
 
-          recipeTime = convertTime(recipeTime);
-         
-          
+          for(let i = 1; i < 21; i++) {
+            let currentIngredient = item[`strIngredient${i}`]; 
+            let nextIngredient = item[`strIngredient${i + 1}`]; 
+
+            ingredients += currentIngredient;
+
+            if(nextIngredient === '') break ;
+            else ingredients += ', ';
+          }
+
           return (
-              <div key={`item-container-${item.id}`} className="item-container" style={{backgroundImage: `url(${item.thumbnail_url})`} }>
+              <div key={`item-container-${item.idMeal}`} className="item-container" style={{backgroundImage: `url(${item.strMealThumb})`} }>
                 <div className='overlay-container'>
-                  <p className='recipe-name'>{item.name}</p>
+                  <p className='recipe-name'>{item.strMeal}</p>
               
                   <div className='recipe-info'>
-                    <p>Servings: {item.num_servings}</p>
-              
-                    <p>Time: {recipeTime}</p>
+                    <p>Ingredients: {ingredients}</p>
+                    <p>Category: {item.strCategory}</p>
                   </div>
                 </div>
               </div>

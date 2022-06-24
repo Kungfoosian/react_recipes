@@ -11,42 +11,44 @@ app.use(cors());
 app.listen(PORT);
 console.log(`Server listening on ${PORT}`)
 
-app.get('/', (req, res) => {
-  res.json('Hi');
-})
-
 app.get('/recipes-by-name', (req, res) => {
   let recipe = req.query.q;
+
   console.log(`Server: looking for ${recipe}`);
+
   const options = {
     method: 'GET',
-    url: 'https://tasty.p.rapidapi.com/recipes/list',
-    params: {from: '0', size: '10', q:recipe},
+    url: 'https://themealdb.p.rapidapi.com/search.php',
+    params: { s: recipe },
     headers: {
-      'X-RapidAPI-Key': process.env.TASTYAPI_KEY,
-      'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.MEALDB_KEY,
+      'X-RapidAPI-Host': 'themealdb.p.rapidapi.com'
     }
   };
   
   axios.request(options)
   .then(response => {
-    let filteredResults = filterMultiRecipeResults(response.data.results);
-
-    let topResults = getTopResults(filteredResults, 6);
-
-    res.json(topResults);
+    res.json(response.data.meals);
   }).catch(function (error) {
     console.error(error);
   });
 })
 
 
-function filterMultiRecipeResults(array) {
-  return array.filter(element => !Object.hasOwn(element, 'recipes'))
-}
+app.get('/multi-ingredient-recipes', (req, res) => {
+  console.log(req);
 
-function getTopResults(array, amountToReturn) {
-  if(array.length <= amountToReturn) return array;
+  const options = {
+    method: 'GET',
+    url: 'https://themealdb.p.rapidapi.com/filter.php',
+    params: { i: req.query.i },
+    headers: {
+      'X-RapidAPI-Key': process.env.MEALDB_KEY,
+      'X-RapidAPI-Host': 'themealdb.p.rapidapi.com'
+    }
+  };
 
-  return array.slice(0, amountToReturn);
-}
+  axios.request(options)
+  .then(response => res.json(response.data))
+  .catch(err => console.error(err));
+})

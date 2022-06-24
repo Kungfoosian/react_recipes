@@ -15,4 +15,4 @@ Search recipe on Enter
 
 Switch Discover to using recipe cards
 
-Use slug property of api result to get to link https://tasty.co/recipe/<slug>
+add _ for ingredients with >= 2 words (e.g. chicken_breast)
