@@ -1,4 +1,4 @@
-import './3.1.Card.css';
+import './10.Card.css';
 
 // In future just use the html link for food bg, these are just placeholders
 import burritoBg from './img-placeholder/burrito.jpg';  

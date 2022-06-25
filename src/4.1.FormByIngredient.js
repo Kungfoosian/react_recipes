@@ -43,9 +43,9 @@ function FormByIngredient(props){
     }
 
     const searchRecipe = () => {
-        let ingredients = ingredientList.map(ingredient => ingredient.name).toString();
+        let filteredList = ingredientList.filter(ingredient =>  ingredient.name !== '');
 
-        console.log(ingredients);
+        let ingredients = filteredList.map(ingredient => ingredient.name).toString();
 
         const OPTIONS = {
             method: 'GET',

@@ -1,4 +1,4 @@
-import Card from './3.1.Card';
+import Card from './10.Card';
 // import Keywords from './3.2.Keywords';
 import './2.1.Discover.css';
 

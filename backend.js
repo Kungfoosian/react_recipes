@@ -36,8 +36,6 @@ app.get('/recipes-by-name', (req, res) => {
 
 
 app.get('/multi-ingredient-recipes', (req, res) => {
-  console.log(req);
-
   const options = {
     method: 'GET',
     url: 'https://themealdb.p.rapidapi.com/filter.php',

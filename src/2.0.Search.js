@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Form from './3.0.Form';
+import FormByName from './3.0.FormByName';
+import FormByIngredient from './4.1.FormByIngredient';
 
 function Search(props) {
     const [activeTab, setActiveTab] = useState('form-by-name');
@@ -12,8 +13,8 @@ function Search(props) {
             </div>
 
             { activeTab === 'form-by-name' ?
-                <Form className='by-name' id='form-by-name' byIngredient={false}  />
-                : <Form className='by-ingredient' id='form-by-ingredient' byIngredient={true} />
+                <FormByName className='by-name' id='form-by-name' />
+                : <FormByIngredient className='by-ingredient' id='form-by-ingredient' byIngredient={true} />
             }
         </div>
     )

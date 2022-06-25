@@ -14,5 +14,3 @@ Input validation!!!
 Search recipe on Enter
 
 Switch Discover to using recipe cards
-
-add _ for ingredients with >= 2 words (e.g. chicken_breast)

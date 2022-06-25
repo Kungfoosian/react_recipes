@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Spinner from 'react-bootstrap/Spinner';
 import RecipeCard from "./5.3.RecipeCard";
-import './4.0.FormByName.css';
+import './3.0.FormByName.css';
 
-// const SERVER_URL = 'http://localhost:8000'
 const axios = require('axios');
 
 export default function FormByName(props){
@@ -40,15 +39,10 @@ export default function FormByName(props){
           
           axios.request(options)
           .then(response => {
-            // console.log(response.data);
             addResults(response.data);
           }).catch(function (error) {
             console.error(error);
           });
-    }
-
-    const visitPage = pageId => {
-
     }
 
     useEffect(() => {
