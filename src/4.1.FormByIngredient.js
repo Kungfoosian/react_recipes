@@ -92,7 +92,7 @@ function FormByIngredient(props){
             </Spinner>
         </div>
         : recipeResults.length?
-            <RecipeCard list={recipeResults} clearResults={clearResults} />
+            <RecipeCard recipeList={recipeResults} clearResults={clearResults} />
             :   <div className={props.className} id={props.id}>
                     <ToastNotification toastList={alertList} delay={2500} />
 

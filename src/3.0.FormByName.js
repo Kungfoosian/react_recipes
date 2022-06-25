@@ -58,7 +58,7 @@ export default function FormByName(props){
             </Spinner>
         </div>
         : resultList.length ? 
-            <RecipeCard list={resultList} clearResults={clearResults} />
+            <RecipeCard recipeList={resultList} clearResults={clearResults} />
             : (<div id={props.id} className={props.className}>
                 <label htmlFor='name-input'>
                     <input type="text" name='name-input' placeholder='e.g. Carrot Cake' onChange={updateRecipe} />
