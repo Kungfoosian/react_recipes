@@ -5,8 +5,22 @@ import { v4 as uuidv4 } from 'uuid';
 import './4.1.FormByIngredient.css';
 import ToastNotification from './5.2.ToastNotification';
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
+import RecipeCard from './5.3.RecipeCard';
+
 
 function FormByIngredient(props){
+    const [loading, setLoading] = useState(false);
+
+    const [ recipeResults, editRecipeResults ] = useState([]);
+
+    const addResults = list => {
+        console.log(list);
+        editRecipeResults(list);
+    }
+
+    const clearResults = () => editRecipeResults([]);
+
     const [ alertList, updateAlertList ] = useState([]);
 
     const addAlert = (type, message) => {
@@ -43,6 +57,8 @@ function FormByIngredient(props){
     }
 
     const searchRecipe = () => {
+        setLoading(true);
+
         let filteredList = ingredientList.filter(ingredient =>  ingredient.name !== '');
 
         let ingredients = filteredList.map(ingredient => ingredient.name).toString();
@@ -56,39 +72,54 @@ function FormByIngredient(props){
         } ;
 
         axios.request(OPTIONS)
-        .then(response => console.log(response.data))
+        .then(response => addResults(response.data.meals))
         .catch(err => console.error(err))
     }
 
     useEffect(() => { if(alertList.length > 0 && ingredientList.length < 4)  resetAlerts() } , [ingredientList, alertList]);
 
+    useEffect(() => {
+        if(recipeResults.length) setLoading(false);
+    }, [recipeResults])
+
     return (
-        <div className={props.className} id={props.id}>
-            <ToastNotification toastList={alertList} delay={2500} />
+        loading? 
+        <div className="spinner-container">
+            <Spinner animation="border" role="status">
+            
+                <span className="visually-hidden">Loading...</span>
 
-            <div className='ingredient-container'>
-                {ingredientList.map((ingredient, index) => {
-                    return (
-                        <div key={index} className='input-container'>
-                            <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredientName}/>
-                            { ingredientList.length > 1 ?
-                                <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
-                                : ''
-                            }
-                        </div>
-                    )
-                })}
-            </div>
-
-            <div className='button-container'>
-                <ActionButton type='add' className='add' onClick={() => {                   
-                    ingredientList.length >= 4 ? 
-                        addAlert('warning', '4 ingredients plz')
-                        : addIngredient();
-                }} />
-                <ActionButton type='search' className='search' onClick={searchRecipe} />
-            </div>
+            </Spinner>
         </div>
+        : recipeResults.length?
+            <RecipeCard list={recipeResults} clearResults={clearResults} />
+            :   <div className={props.className} id={props.id}>
+                    <ToastNotification toastList={alertList} delay={2500} />
+
+                    <div className='ingredient-container'>
+                        {ingredientList.map((ingredient, index) => {
+                            return (
+                                <div key={index} className='input-container'>
+                                    <Input key={ingredient.id} id={index} placeholder={ingredient.name} handleChange={updateIngredientName}/>
+                                    { ingredientList.length > 1 ?
+                                        <ActionButton type='remove' className='remove' onClick={ () => removeIngredient(ingredient.id) }/> 
+                                        : ''
+                                    }
+                                </div>
+                            )
+                        })}
+                    </div>
+
+                    <div className='button-container'>
+                        <ActionButton type='add' className='add' onClick={() => {                   
+                            ingredientList.length >= 4 ? 
+                                addAlert('warning', '4 ingredients plz')
+                                : addIngredient();
+                        }} />
+                        <ActionButton type='search' className='search' onClick={searchRecipe} />
+                    </div>
+                </div>
+        
     )
 }
 
