@@ -50,3 +50,18 @@ app.get('/multi-ingredient-recipes', (req, res) => {
   .then(response => res.json(response.data))
   .catch(err => console.error(err));
 })
+
+app.get('/random-recipes', (req, res) => {
+  const options = {
+    method: 'GET',
+    url: 'https://themealdb.p.rapidapi.com/randomselection.php',
+    headers: {
+      'X-RapidAPI-Key': process.env.MEALDB_KEY,
+      'X-RapidAPI-Host': 'themealdb.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options)
+  .then(response => res.json(response.data.meals))
+  .catch(error => console.error(error));
+})

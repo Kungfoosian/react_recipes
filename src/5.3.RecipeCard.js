@@ -2,7 +2,10 @@ import React from 'react';
 import './5.3.RecipeCard.css';
 
 export default function RecipeCard(props) {
-  const { recipeList, clearResults } = props;
+  const recipeList = props.recipeList;
+  const btnAction = props.btnAction;
+  const clearResults = props.clearResults;
+  const refreshResults = props.refreshResults;
 
   return (
     <div className='recipe-card-container'>
@@ -30,8 +33,11 @@ export default function RecipeCard(props) {
           )
         })}
       </div>
-
-      <button className='remove' onClick={clearResults}>Clear Results</button>
+      
+      {btnAction === 'remove' ?
+        <button className='remove' onClick={clearResults}>Clear Results</button>
+        : <button className='refresh' onClick={refreshResults}>Refresh</button>
+      }
     </div>
   )
 }
