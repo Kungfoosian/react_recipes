@@ -48,7 +48,13 @@ app.get('/multi-ingredient-recipes', (req, res) => {
 
   axios.request(options)
   .then(response => res.json(response.data))
-  .catch(err => console.error(err));
+  .catch(err => {
+    console.error(err);
+
+    res.status(500).send({
+      message: 'Server error'
+    })
+  });
 })
 
 app.get('/random-recipes', (req, res) => {
