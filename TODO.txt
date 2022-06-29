@@ -1,6 +1,4 @@
 
-Remove & delete placeholder bg for Cards when implementing API calls
-
 Style all buttons to look like tabs? (top border curve)
 
 Popup message:
@@ -8,8 +6,6 @@ Popup message:
 
 Remove Action button component, replace w/ regular buttons in components
   that needs it (components bloating?)
-
-Input validation!!! to server
 
 Search recipe on Enter
 

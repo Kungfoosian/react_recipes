@@ -14,6 +14,12 @@ console.log(`Server listening on ${PORT}`)
 app.get('/recipes-by-name', (req, res) => {
   let recipe = req.query.q;
 
+  if(!validateInput(recipe)) {
+    res.status(500).send({
+      message: 'Server error'
+    })
+  }
+
   console.log(`Server: looking for ${recipe}`);
 
   const options = {
@@ -36,6 +42,14 @@ app.get('/recipes-by-name', (req, res) => {
 
 
 app.get('/multi-ingredient-recipes', (req, res) => {
+  let input = req.query.i;
+  
+  if(!validateInput(input)) {
+    res.status(500).send({
+    message: 'Server error'
+  })
+  }
+
   const options = {
     method: 'GET',
     url: 'https://themealdb.p.rapidapi.com/filter.php',
@@ -71,3 +85,11 @@ app.get('/random-recipes', (req, res) => {
   .then(response => res.json(response.data.meals))
   .catch(error => console.error(error));
 })
+
+function validateInput(input) {
+  let filteredInput = input.trim().replace(/[^a-zA-Z0-9\s]/g, '');
+
+  if(filteredInput.length) return filteredInput;
+
+  return false;
+}

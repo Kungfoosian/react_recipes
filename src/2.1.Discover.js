@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Card from './10.Card';
 import Spinner from 'react-bootstrap/Spinner';
 import './2.1.Discover.css';
 import RecipeCard from './5.3.RecipeCard';
