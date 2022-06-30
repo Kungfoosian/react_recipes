@@ -50,10 +50,10 @@
   padding: 10px;
   border-radius: 18px;
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid black;
   
   font-weight: bold;
-  color: white;
+  color: black;
 
   transition-duration: var(--transition-duration);
 }
@@ -101,7 +101,7 @@
   width: 100%;
   height: 2px;
 
-  background-color: white;
+  background-color: black;
 
   transform: rotate(45deg);
 

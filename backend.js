@@ -43,6 +43,8 @@ app.get('/recipes-by-name', (req, res) => {
 
 app.get('/multi-ingredient-recipes', (req, res) => {
   let input = req.query.i;
+
+  console.log(input);
   
   if(!validateInput(input)) {
     res.status(500).send({

@@ -60,6 +60,20 @@ body {
     background-color: var(--orange);
 }
 
+#root > .form > .form-selector > .tab {
+    border: none;
+    /* border-top-left-radius: 20px; */
+    /* border-top-right-radius: 20px; */
+}
+#root > .form > .form-selector > .tab.by-name {
+    background-color: var(--orange);
+}
+
+#root > .form > .form-selector > .tab.by-ingredient {
+    background-color: var(--green);
+}
+
+    
 #root .form > div:last-child.by-name > label {
     width: 80%;
 }

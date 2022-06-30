@@ -8,8 +8,8 @@ function Search(props) {
     return (
         <div className={props.className} id={props.id} >
             <div className='form-selector'>
-                <button onClick={() => setActiveTab('form-by-name')}>By Name</button>
-                <button onClick={() => setActiveTab('form-by-ingredient')}>By Ingredient</button>
+                <button className='tab by-name' onClick={() => setActiveTab('form-by-name')}>By Name</button>
+                <button className='tab by-ingredient' onClick={() => setActiveTab('form-by-ingredient')}>By Ingredient</button>
             </div>
 
             { activeTab === 'form-by-name' ?
